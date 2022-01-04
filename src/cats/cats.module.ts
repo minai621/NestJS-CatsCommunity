@@ -1,3 +1,4 @@
+import { CommentsSchema } from './../comments/comments.schema';
 import { AuthModule } from './../auth/auth.module';
 import { CatsRepository } from './cats.repository';
 import { Cat, CatSchema } from './cats.schema';
@@ -6,6 +7,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { CatsController } from './cats.controller';
 import { CatsService } from './cats.service';
 import { MulterModule } from '@nestjs/platform-express';
+import { Comments } from 'src/comments/comments.schema';
 
 @Module({
   imports: [
@@ -13,6 +15,10 @@ import { MulterModule } from '@nestjs/platform-express';
       {
         name: Cat.name,
         schema: CatSchema,
+      },
+      {
+        name: Comments.name,
+        schema: CommentsSchema,
       },
     ]),
     MulterModule.register({
