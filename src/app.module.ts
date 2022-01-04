@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { CatsModule } from './cats/cats.module';
 import { LoggerMiddleware } from './common/middlewares/logger.middleware';
+import { AuthModule } from './auth/auth.module';
 import * as mongoose from 'mongoose';
 
 @Module({
@@ -11,10 +12,9 @@ import * as mongoose from 'mongoose';
     MongooseModule.forRoot(process.env.MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      useCreateIndex: true,
-      useFindAndModify: false,
     }),
     CatsModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],
